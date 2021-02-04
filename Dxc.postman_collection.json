@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "350d8a66-ca2d-4935-94e2-60735cb393cc",
+		"name": "Dxc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Dxc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Diez x Ciento\", () => {",
+							"  const responseJson = pm.response.json();",
+							"  pm.expect(responseJson.ahorro).to.eql(5000000);",
+							"  pm.expect(responseJson.dxc).to.eql(1000000);",
+							"});",
+							"",
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test(\"Sataus code is 200\", function(){",
+							"    pm.response.to.have.status(200)",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 3000ms\", () =>{",
+							" pm.expect(pm.response.responseTime).to.be.below(3000);",
+							"});",
+							"",
+							"pm.test(\"el saldo es igual a\",() => {",
+							"  pm.expect(responseJson.saldo).to.eql(4000000);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is present\", () => {",
+							"  pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rest/msdxc/dxc?ahorro=5000000&sueldo=1000000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"msdxc",
+						"dxc"
+					],
+					"query": [
+						{
+							"key": "ahorro",
+							"value": "5000000"
+						},
+						{
+							"key": "sueldo",
+							"value": "1000000"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
